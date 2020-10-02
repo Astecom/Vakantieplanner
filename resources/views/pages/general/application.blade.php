@@ -2,13 +2,13 @@
 @section('content')
 
 <div class="card w-100 d-inline-block" style="height: 75px;">
-  <a type="button" href="{{route('adminpage')}}" class="btn float-left btn-success ml-4 mt-3" >Instellingen Profiel <i class="fas fa-unlock ml-1"></i></a>
+  <a type="button" href="{{route('adminpage')}}" class="btn float-left btn-success ml-4 mt-3" >Redirect to idk <i class="fas fa-unlock ml-1"></i></a>
 
   <span class="float-right font-weight-bold mt-4 mr-3">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
 </div>
 
 <div class="col-12 row">
-  <p class="col-4 mt-2">Aanvraagformulier</p>
+  <h1 class="col-4 mt-2">iets</h1>
   <div class="col-8">
     <button type="submit" form="pushApplication" class="btn btn-primary mt-1 mr--4 float-right" >Aanvraag versturen <i class="fas fa-angle-double-right"></i></button>
     <a type="button" href="{{route('adminpage')}}" class="btn float-right btn-info mt-1 mr-2" >Terug <i class="fas fa-undo-alt ml-1"></i></a>
@@ -18,6 +18,7 @@
 <div class="col-12 mt--4">
   <hr>
 </div>
+
 
 <div class="p-3 mtinpu row">
 

@@ -3,7 +3,7 @@
 <body>
 
   <div class="card w-100 d-inline-block" style="height: 75px;">
-    <a type="button" href="{{route('adminpage')}}" class="btn float-left btn-success ml-4 mt-3" >Instellingen Profiel <i class="fas fa-unlock ml-1"></i></a>
+    <a type="button" href="{{route('adminpage')}}" class="btn float-left btn-success ml-4 mt-3" >Redirect to idk <i class="fas fa-unlock ml-1"></i></a>
     <div class="card-body">
         <span class="float-right mr-2 font-weight-bold">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
     </div>
