@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital@1&family=Ubuntu:ital@0;1&display=swap');
+*{
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+  background-color: #F9FBFE !important;
+}
+
+.navbardarkcolor{
+  background-color: #202c45 !important;
+}
+
+.card{
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.10) !important;
+}
+
+.mlus {
+  background-color: #d2f7f7; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.dateFieldsWrapper{
+  .form-control{
+    width: 48% !important;
+    float: left;
+    &:nth-child(2n){
+      margin-left: 4%;
+    }
+  }
+}
+
+.fasttitle{
+  
+}
+
+
+// .buttonshadowless{
+//   box-shadow: 0px;
+//   background-color: #fff;
+//   border: 0px;
+//     &:hover, &:focus{
+//       box-shadow: 0px;
+//       background-color: #fff;
+//       border: 0px;
+//     }
+// }
