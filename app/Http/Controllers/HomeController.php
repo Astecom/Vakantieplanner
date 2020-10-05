@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Illuminate\Notifications\Notifiable;
-use Auth;
-use App\Models\User;
-use App\Models\PasswordReset;
 use Illuminate\Support\Facades\Hash;
+use App\Models\PasswordReset;
+use Illuminate\Http\Request;
+use App\Models\User;
+
 
 
 class HomeController extends Controller
@@ -36,14 +34,9 @@ class HomeController extends Controller
     public function index()
     {
 
-      dd('test');
-        //
-        // auth()->user()->assignRole('admin');
-        // auth()->user()->assignRole('employer');
-        // auth()->user()->assignRole('employee');
-
     }
 
+    // Create a new password e-mail and sent it to the users email adress
     public function newpassword(request $request){
       $accountCheck = PasswordReset::where('email',$request->email)->first();
       $user = User::where('email',$request->email)->first();
@@ -53,6 +46,7 @@ class HomeController extends Controller
       }
     }
 
+    // Submit the new hashed password to the database
     public function submitPassword(request $request){
       $pushpassword = User::find($request->userId);
       $pushpassword->password = Hash::make($request->userPassword);

@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\Admin::class,
         'applicationcheck' => \App\Http\Middleware\applicationcheck::class,
         'application' => \App\Http\Middleware\application::class,
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
     ];
 }

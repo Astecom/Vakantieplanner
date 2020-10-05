@@ -19,7 +19,7 @@ class application
         if(Auth::user() == null){
           return redirect()->to('login');
         }
-        else if(Auth::user()->hasRole('employee') || Auth::user()->hasRole('admin')){
+        else if(Auth::user()->hasRole('employee')){
           return $next($request);
         }
         else{

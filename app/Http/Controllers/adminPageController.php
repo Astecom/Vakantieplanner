@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
-use Illuminate\Support\Facades\Hash;
-use App\Notifications\SetPassword;
+use Auth;
 
+
+// Sent data to the standard admin page with pagination and active users only
 class adminPageController extends Controller
 {
     public function index(Request $request){
       $getusers = User::query();
+
+      Auth::user()->removeRole('admin');
+      Auth::user()->removeRole('employer');
+      Auth::user()->removeRole('employee');
+
+      Auth::user()->assignRole('employee');
 
       if($request->has('searchUser')){
         $getusers->where('email', 'like', '%' . $request->searchUser . '%');
@@ -20,6 +28,7 @@ class adminPageController extends Controller
 
       return view('pages/admincontrol/adminpage', ['getusers'=>$result ,'data'=>$request]);
     }
+
 
     // Edit, Delete  and Submit the user
     public function deleteUser($user_id){
@@ -30,7 +39,7 @@ class adminPageController extends Controller
 
     }
 
-    // Verstuur de pagina naar useredit met de juiste data.
+    // Edit the selected user with the right parameters
     public function editUser($user_id){
       $edits = User::find($user_id);
       $roles = Role::all();
@@ -38,20 +47,39 @@ class adminPageController extends Controller
 
     }
 
-    // Verstuur de data die aangepast word in de editpage naar de database
-    public function editSubmit(request $request, $user_id){
-      $editrequest = User::find($user_id);
 
-      if($request->password != null){
-        $editrequest->password = Hash::make($request->password);
+
+    // Sent the edit information of the selected user to the database
+    public function editSubmit(request $request, $user_id){
+      $user = User::find($user_id);
+      $user->removeRole('employee');
+      $user->removeRole('employer');
+      $user->removeRole('admin');
+
+      if($request->workerType == 1){
+        $user->assignRole('employee');
+      }
+      elseif($request->workerType == 2){
+        $user->assignRole('employer');
+      }
+      elseif($request->workerType == 3){
+        $user->assignRole('admin');
       }
 
-      $editrequest->name = $request->userName;
-      $editrequest->email = $request->email;
-      $editrequest->save();
+      if($request->password != null){
+        $user->password = Hash::make($request->password);
+      }
+
+      $user->name = $request->userName;
+      $user->email = $request->email;
+      $user->active = $request->active;
+      $user->save();
+
       return redirect()->route('adminpage');
     }
 
+
+    // Add a new user to the database
     public function adminpagesadd(request $request){
       $validatedDataColums = $request->validate([
         'userName' => ['required', 'min:3', 'max:30'],
@@ -73,28 +101,6 @@ class adminPageController extends Controller
     }
 
 
-    public function endeditrights(request $request, $user_id){
-      $user = User::find($user_id);
-      $user->removeRole('employee');
-      $user->removeRole('employer');
-      $user->removeRole('admin');
 
-
-      if($request->workerType == 1){
-        $user->assignRole('employee');
-      }
-      elseif($request->workerType == 2){
-        $user->assignRole('employer');
-      }
-      elseif($request->workerType == 3){
-        $user->assignRole('admin');
-      }
-
-      $user->active = $request->active;
-      $user->save();
-
-      return redirect()->route('adminpagesendedit', $user_id);
-
-    }
 
 }

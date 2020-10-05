@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Application;
-use App\Models\User;
-use Auth;
-
 use Carbon\Carbon;
+use Auth;
 
 class applicationFormController extends Controller
 {
+
+    // Load the standard page for usage
     public function index(){
       $userinfo = Auth::user();
       return view('pages/general/application', ['userinfo'=>$userinfo]);
     }
 
 
-    // Verstuur de appilication naar de database met daarin 2 verplichte kolommen
+    // Sent the application to the database
     public function applicationpush(Request $request){
         $validatedData = $request->validate([
         'formApplication' => 'required',
@@ -34,12 +34,7 @@ class applicationFormController extends Controller
         $verlofreq->date_till = Carbon::parse($request->formDateTill);
         $verlofreq->save();
         app('App\Http\Controllers\mailController')->applicationSent();
-        return redirect()->route('history');
+        return redirect()->route('applicationcheck');
     }
 
-
-
-    public function applicationback(){
-      return redirect()->back();
-    }
 }

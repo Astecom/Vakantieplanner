@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Notifications\SetPassword;
 use App\Notifications\ApplicationSent;
+use App\Notifications\SetPassword;
 use App\Notifications\StatusUpdate;
 use App\Models\PasswordReset;
-use App\Models\User;
 use App\Models\Application;
-use Auth;
 use Illuminate\Support\Str;
+use App\Models\User;
+use Auth;
+
 
 class mailController extends Controller
 {
 
-
+  // Getting the email adress and give it a token. thereafter sent an email to the specific user
   public function setPassword($email){
     $user = Auth::user();
     $notification = new SetPassword;
@@ -39,7 +40,7 @@ class mailController extends Controller
     return $notification->toMail('test@example.com');
   }
 
-
+  // Sent an email when there's a new application requested to the managing board
   public function applicationSent(){
     $notification = new ApplicationSent;
     $user = User::find(4);
@@ -49,6 +50,7 @@ class mailController extends Controller
 
   }
 
+  // Sent an email to the user when the status has been updated
   public function statusUpdate($applicationid){
     $notification = new StatusUpdate;
     $finduserid = Application::find($applicationid)->value('user_id');

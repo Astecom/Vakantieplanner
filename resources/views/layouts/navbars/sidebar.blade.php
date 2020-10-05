@@ -87,10 +87,10 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
 
-              @if(Auth::user()->hasRole('employee'))
+              @if(Auth::user()->hasRole('employer') || Auth::user()->hasRole('employee'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('history') }}">
-                        <i class="ni ni-tv-2 text-grey"></i> {{ __('Geschiedenis') }}
+                    <a class="nav-link" href="{{route('applicationcheck')}}">
+                        <i class="far fa-calendar-check text-grey"></i> {{ __('Aanvragen Overzicht') }}
                     </a>
                 </li>
               @endif
@@ -98,7 +98,7 @@
               @if(Auth::user()->hasRole('employee'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('application')}}">
-                        <i class="far fa-envelope text-grey"></i> {{ __('Aanvragen Verlof') }}
+                        <i class="far fa-envelope text-grey"></i> {{ __('Nieuwe Aanvraag') }}
                     </a>
                 </li>
               @endif
@@ -107,14 +107,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('adminpage')}}">
                         <i class="fas fa-user-lock text-grey"></i> {{ __('Admin Overzicht') }}
-                    </a>
-                </li>
-              @endif
-
-              @if(Auth::user()->hasRole('employer'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('applicationcheck')}}">
-                        <i class="far fa-calendar-check text-grey"></i> {{ __('Aanvragen Overzicht') }}
                     </a>
                 </li>
               @endif

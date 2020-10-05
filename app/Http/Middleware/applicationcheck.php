@@ -16,7 +16,7 @@ class applicationcheck
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->hasRole('employer') || Auth::user()->hasRole('admin')){
+        if(Auth::user()->hasRole('employer')){
           return $next($request);
         }
         else{

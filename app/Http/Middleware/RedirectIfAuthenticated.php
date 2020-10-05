@@ -21,13 +21,13 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
           switch (Auth::user()->roles->pluck('name')->first()) {
             case 'employee':
-              return redirect()->route('history');
+              return redirect()->route('applicationcheck');
               break;
             case 'employer':
-              return 'applicationcheck';
+              return redirect()->route('applicationcheck');
               break;
             case 'admin':
-              return 'adminpage';
+              return redirect()->route('adminpage');
               break;
           }
             //return redirect(RouteServiceProvider::HOME);
