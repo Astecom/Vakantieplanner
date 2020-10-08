@@ -3,7 +3,13 @@
 <body>
 
   <div class="card w-100 d-inline-block" style="height: 75px;">
+    @if(auth()->user()->hasRole('employer'))
+    <a type="button" href="{{ route('logout') }}" onclick="event.preventDefault();
+    document.getElementById('logout-form').submit();" class="btn float-left btn-success ml-4 mt-3" >Administartor Login <i class="fas fa-unlock"></i></a>
+    @else
     <a type="button" href="{{route('application')}}" class="btn float-left btn-success ml-4 mt-3" >Nieuwe Verlofanvraag <i class="fas fa-plus ml-1"></i></a>
+    @endif
+
     <div class="card-body">
         <span class="float-right mr-2 font-weight-bold">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
     </div>
@@ -31,47 +37,78 @@
                     <td>Status</td>
                     <td>Datum van</td>
                     <td>Datum tot</td>
-                    <td>Actie</td>
+                    @if(Auth::user()->hasRole('employer'))
+                    <td>Inzien</td>
+                    @else
+                    <td>Toelichting</td>
+                    @endif
                   </tr>
                 </thead>
-                @foreach($applicationdatas as $applicationdata)
-                <tbody>
-                  <tr>
-                    @if(Auth::user()->hasRole('employer'))
-                    <td>{{$applicationdata->user->name}}</td>
-                    @endif
-                    <td class="text-capitalize">{{$applicationdata->application_type->name}}</td>
 
-                    @switch($applicationdata->application_status->id)
-                      @case(1)
-                        <td><span class="badge badge-info text-capitalize">{{$applicationdata->application_status->name}}</span></td>
-                        @break
-                      @case(2)
-                        <td><span class="badge badge-success text-capitalize">{{$applicationdata->application_status->name}}</span></td>
-                        @break
-                      @case(3)
-                        <td><span class="badge badge-danger text-capitalize">{{$applicationdata->application_status->name}}</span></td>
-                        @break
-                    @endswitch
+                @if(Auth::user()->hasRole('employer'))
+                  @foreach($applicationdatas as $applicationdata)
+                  <tbody>
+                    <tr>
+                      <td>{{$applicationdata->user->name}}</td>
+                      <td class="text-capitalize">{{$applicationdata->application_type->name}}</td>
 
-                    <td>{{$applicationdata->date_from}}</td>
-                    <td>{{$applicationdata->date_till}}</td>
+                      @switch($applicationdata->application_status->id)
+                        @case(1)
+                          <td><span class="badge badge-info text-capitalize">{{$applicationdata->application_status->name}}</span></td>
+                          @break
+                        @case(2)
+                          <td><span class="badge badge-success text-capitalize">{{$applicationdata->application_status->name}}</span></td>
+                          @break
+                        @case(3)
+                          <td><span class="badge badge-danger text-capitalize">{{$applicationdata->application_status->name}}</span></td>
+                          @break
+                      @endswitch
 
-                    @if(Auth::user()->hasRole('employer'))
-                    <td>
-                      <a href="{{route('applicationcheckedit', $applicationdata->id)}}" class="btn btn-primary" type="button"><i class="fab fa-sistrix text-white"></i></a>
-                    </td>
-                    @endif
+                      <td>{{$applicationdata->date_from}}</td>
+                      <td>{{$applicationdata->date_till}}</td>
+                      <td>
+                        <a href="{{route('applicationcheckedit', $applicationdata->id)}}" class="btn btn-primary" type="button"><i class="fab fa-sistrix text-white"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                  @endforeach
+                @endif
 
-                    @if(Auth::user()->hasRole('employee'))
-                    <td>
-                      <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Hey"><i class="far fa-comments" style="font-size: 130%"></i></button>
-                    </td>
-                    @endif
+                @if(Auth::user()->hasRole('employee'))
+                  @foreach($applicationdatas as $applicationdata)
+                  <tbody>
+                    <tr>
 
-                  </tr>
-                </tbody>
-                @endforeach
+                      <td class="text-capitalize">{{$applicationdata->application_type->name}}</td>
+
+                      @switch($applicationdata->application_status->id)
+                        @case(1)
+                          <td><span class="badge badge-info text-capitalize">{{$applicationdata->application_status->name}}</span></td>
+                          @break
+                        @case(2)
+                          <td><span class="badge badge-success text-capitalize">{{$applicationdata->application_status->name}}</span></td>
+                          @break
+                        @case(3)
+                          <td><span class="badge badge-danger text-capitalize">{{$applicationdata->application_status->name}}</span></td>
+                          @break
+                      @endswitch
+
+                      <td>{{$applicationdata->date_from}}</td>
+                      <td>{{$applicationdata->date_till}}</td>
+                      @if($applicationdata->application_status_remark == null)
+                      <td>
+                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Geen Toelichting"><i class="far fa-comments" style="font-size: 130%"></i></button>
+                      </td>
+                      @else
+                      <td>
+                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="{{$applicationdata->application_status_remark}}"><i class="far fa-comments" style="font-size: 130%"></i></button>
+                      </td>
+                      @endif
+                    </tr>
+                  </tbody>
+                  @endforeach
+                @endif
+
             </form>
           </table>
 

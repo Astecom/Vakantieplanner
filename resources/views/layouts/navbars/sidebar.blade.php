@@ -90,7 +90,7 @@
               @if(Auth::user()->hasRole('employer') || Auth::user()->hasRole('employee'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('applicationcheck')}}">
-                        <i class="far fa-calendar-check text-grey"></i> {{ __('Aanvragen Overzicht') }}
+                        <i class="fas fa-history"></i> {{ __('Aanvragen Overzicht') }}
                     </a>
                 </li>
               @endif

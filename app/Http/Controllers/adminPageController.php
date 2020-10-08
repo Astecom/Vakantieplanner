@@ -15,15 +15,10 @@ class adminPageController extends Controller
     public function index(Request $request){
       $getusers = User::query();
 
-      Auth::user()->removeRole('admin');
-      Auth::user()->removeRole('employer');
-      Auth::user()->removeRole('employee');
-
-      Auth::user()->assignRole('employee');
-
       if($request->has('searchUser')){
         $getusers->where('email', 'like', '%' . $request->searchUser . '%');
       }
+
       $result = $getusers->where('active',1)->paginate(7);
 
       return view('pages/admincontrol/adminpage', ['getusers'=>$result ,'data'=>$request]);

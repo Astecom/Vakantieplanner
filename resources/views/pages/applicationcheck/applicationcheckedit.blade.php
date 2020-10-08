@@ -89,7 +89,7 @@
 
         <div class="form-group col-12 p-0 mt-3">
           <label class="col-4 text-left d-table font-weight-bold">Opmerking:</label>
-          <textarea name="formRemark" class="form-control col-8">{{$applicationinfo->application_status_remark}}</textarea>
+          <textarea name="formRemark" class="form-control col-8" placeholder="{{$applicationinfo->application_status_remark}}" ></textarea>
         </div>
 
         <div class="col-12 p-0 mt-4">

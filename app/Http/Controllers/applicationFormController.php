@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\GoogleCalendar\Event;
 use App\Models\Application;
 use Carbon\Carbon;
 use Auth;
@@ -30,10 +31,12 @@ class applicationFormController extends Controller
         $verlofreq->status_id = '1';
         $verlofreq->type_id = $request->formApplication;
         $verlofreq->remark = $request->formRemark;
-        $verlofreq->date_from = Carbon::parse($request->formDateFrom);
-        $verlofreq->date_till = Carbon::parse($request->formDateTill);
+        $verlofreq->date_from = Carbon::parse($request->formDateFrom . ' ' . $request->timeFrom);
+        $verlofreq->date_till = Carbon::parse($request->formDateTill . ' ' . $request->timeTill);
         $verlofreq->save();
         app('App\Http\Controllers\mailController')->applicationSent();
+
+
         return redirect()->route('applicationcheck');
     }
 

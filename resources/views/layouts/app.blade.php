@@ -19,6 +19,7 @@
         <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+        <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet">
 
 
     </head>
@@ -40,7 +41,8 @@
 
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+        <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+
 
 
         @stack('js')

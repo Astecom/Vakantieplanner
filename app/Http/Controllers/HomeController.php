@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\PasswordReset;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
 
+use Carbon\Carbon;
 
 
 class HomeController extends Controller
@@ -24,6 +26,7 @@ class HomeController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
+
     }
 
     /**

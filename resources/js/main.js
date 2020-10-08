@@ -15,6 +15,16 @@ $(document).ready(function(){
     $('#addit').modal('show');
   });
 
+$fromDate = new Date();
+$('.datepicker').datepicker({
+weekStart:1,
+color: 'red',
+startDate: $fromDate,
+autoclose: true,
+format: 'dd-mm-yyyy',
+});
+
+
 // }).then(function(response){})
 // .catch(function(response){});
 // $('#deleteit').modal('hide');
