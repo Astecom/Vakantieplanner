@@ -103,7 +103,7 @@
                 </li>
               @endif
 
-              @if(Auth::user()->hasRole('admin'))
+              @if(Auth::user()->hasRole('employer'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('adminpage')}}">
                         <i class="fas fa-user-lock text-grey"></i> {{ __('Admin Overzicht') }}

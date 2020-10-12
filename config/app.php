@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'nl',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'nl',
 
     /*
     |--------------------------------------------------------------------------
@@ -168,7 +168,7 @@ return [
          Reliese\Coders\CodersServiceProvider::class,
          Spatie\Permission\PermissionServiceProvider::class,
          Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
-         
+
 
         /*
          * Application Service Providers...

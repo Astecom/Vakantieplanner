@@ -48,7 +48,7 @@
                     <label class="col-4 text-left d-table font-weight-bold">Type Gebruiker</label>
                     <select class="form-control col-6" name="workerType">
                       @foreach($roles as $role)
-                      <option {{$role->id === $edits->roles->pluck('id')[0] ? "selected='selected'" : ""}} value="{{$role->id}}">{{$role->name}}</option>
+                      <option {{$role->id === $edits->roles->pluck('id')[0] ? "selected='selected'" : ""}} value="{{$role->id}}">{{trans('common.' . $role->name)}}</option>
                       @endforeach
                     </select>
                   </div>

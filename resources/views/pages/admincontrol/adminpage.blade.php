@@ -21,7 +21,6 @@
           <table class="table mt-3">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Gebruiker</th>
                 <th>E-mail</th>
                 <th>Lid sinds</th>
@@ -32,7 +31,6 @@
             <tbody>
               @foreach($getusers as $getuser)
               <tr>
-                <td>{{$getuser->id}}</td>
                 <td>{{$getuser->name}}</td>
                 <td>{{$getuser->email}}</td>
                 <td>{{$getuser->created_at}}</td>
@@ -55,11 +53,11 @@
                       </button>
                     </div>
                     <div class="ml-4 mt-3">
-                      <label class="">Gebruikersnaam:</label>
+                      <label class="">Naam:</label>
                       <input type="text" name="userName" value="" class="form-control col-8">
                     </div>
                     <div class="ml-4 mt-2">
-                      <label class="">Email-Adress:</label>
+                      <label class="">Email Adres:</label>
                       <input type="text" name="email" value="" class="form-control col-8">
                     </div>
                     <div class="modal-footer mt-3">

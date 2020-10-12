@@ -30,7 +30,7 @@ Route::group(['middleware' => 'role:employee'], function () {
 	});
 
 // Routes Admin Role
-Route::group(['middleware' => 'role:admin'], function () {
+Route::group(['middleware' => 'role:employer'], function () {
 	Route::get('/adminpage', 'adminPageController@index')->name('adminpage');
 	Route::post('/adminpage/delete/{id}', 'adminPageController@deleteUser')->name('adminpagedelete');
 	Route::get('/adminpages/endedit/{id}', 'adminPageController@editUser')->name('adminpagesendedit');

@@ -37290,9 +37290,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  */
 
 try {
-  window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
-  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-
+  //window.$ = window.jQuery = require('jquery');
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 } catch (e) {}
 /**
@@ -37341,12 +37339,18 @@ $(document).ready(function () {
     $('#addit').modal('show');
   });
   $fromDate = new Date();
-  $('.datepicker').datepicker({
+  $('.datepickeryOUNES').datepicker({
     weekStart: 1,
     color: 'red',
     startDate: $fromDate,
     autoclose: true,
-    format: 'dd-mm-yyyy'
+    format: 'dd/mm/yyyy',
+    language: 'nl',
+    days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    monthsShort: ["Jel", "Bur", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
   }); // }).then(function(response){})
   // .catch(function(response){});
   // $('#deleteit').modal('hide');

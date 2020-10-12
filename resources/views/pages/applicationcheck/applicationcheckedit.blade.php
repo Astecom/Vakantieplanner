@@ -62,7 +62,6 @@
                 <form class="d-table float-left" action="{{route('status', $applicationinfo->id)}}" method="post">
                   @csrf
                   <button name='buttonstatus' class="btn {{$status->btn_class}} ml-2 text-capitalize" type="submit" value="{{$status->id}}">{{$status->name}}</button>
-                </form>
                 @endforeach
               </div>
             </div>
@@ -71,34 +70,28 @@
       </div>
     </div>
 
+    
+
 
 <div class="col-5">
   <div class="card">
     <div class="card-body">
       <h2 class="card-title">Toevoegen Opmerking</h2>
-      <form class="form-inline row" action="{{route('pushremark', $applicationinfo->id)}}" method="post">
-        @csrf
         <div class="form-group col-12 p-0">
-          <label class="col-4 text-left d-table font-weight-bold">Werknemer:</label>
-          <label class="col-4 d-table">{{$applicationinfo->user->name}}</label>
+          <label class="text-left d-table font-weight-bold">Werknemer:</label>
+          <label class="d-table">{{$applicationinfo->user->name}}</label>
         </div>
         <div class="form-group col-12 p-0 mt-3">
-          <label class="col-4 text-left d-table font-weight-bold">E-mail adress:</label>
-          <label class="col-4 d-table text-capitalize">{{$applicationinfo->user->email}}</label>
+          <label class="text-left d-table font-weight-bold">E-mail adress:</label>
+          <label class="d-table text-capitalize">{{$applicationinfo->user->email}}</label>
         </div>
 
         <div class="form-group col-12 p-0 mt-3">
-          <label class="col-4 text-left d-table font-weight-bold">Opmerking:</label>
+          <label class="text-left d-table font-weight-bold">Opmerking:</label>
           <textarea name="formRemark" class="form-control col-8" placeholder="{{$applicationinfo->application_status_remark}}" ></textarea>
         </div>
 
-        <div class="col-12 p-0 mt-4">
-          <div class="row float-right">
-            <div class="col-12">
-                <button class="btn btn-primary w-100" type="submit" name="button">Opmerking Opslaan <i class="fas fa-angle-double-right"></i></button>
-            </div>
-          </div>
-        </div>
+
       </form>
     </div>
   </div>

@@ -43,7 +43,7 @@ class mailController extends Controller
   // Sent an email when there's a new application requested to the managing board
   public function applicationSent(){
     $notification = new ApplicationSent;
-    $user = User::find(4);
+    $user = User::find(3);
     $user->notify(new ApplicationSent);
 
     return $notification->toMail('test@example.com');
