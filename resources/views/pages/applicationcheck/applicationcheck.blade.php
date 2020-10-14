@@ -3,10 +3,7 @@
 <body>
 
   <div class="card w-100 d-inline-block" style="height: 75px;">
-    @if(auth()->user()->hasRole('employer'))
-    <a type="button" href="{{ route('logout') }}" onclick="event.preventDefault();
-    document.getElementById('logout-form').submit();" class="btn float-left btn-success ml-4 mt-3" >Administartor Login <i class="fas fa-unlock"></i></a>
-    @else
+    @if(auth()->user()->hasRole('employee'))
     <a type="button" href="{{route('application')}}" class="btn float-left btn-success ml-4 mt-3" >Nieuwe Verlofaanvraag <i class="fas fa-plus ml-1"></i></a>
     @endif
 
@@ -121,7 +118,6 @@
 
 
 
-@if(Auth::user()->hasRole('employer'))
 <div class="p-4 mt--3">
   <div class="row">
     <div class="col-12">
@@ -136,15 +132,22 @@
           <form class="form-inline mr-auto">
               <thead>
                 <tr>
+                  @if(Auth::user()->hasRole('employer'))
                   <td>Gebruiker</td>
+                  @endif
                   <td>Type Aanvraag</td>
                   <td>Status</td>
                   <td>Datum van</td>
                   <td>Datum t/m</td>
+                  @if(Auth::user()->hasRole('employer'))
                   <td>Inzien</td>
+                  @else
+                  <td>Toelichting</td>
+                  @endif
                 </tr>
               </thead>
 
+              @if(Auth::user()->hasRole('employer'))
                 @foreach($closedApplications as $applicationdata)
                 <tbody>
                   <tr>
@@ -171,21 +174,54 @@
                   </tr>
                 </tbody>
                 @endforeach
+              @endif
+
+              @if(Auth::user()->hasRole('employee'))
+                @foreach($closedApplications as $applicationdata)
+                <tbody>
+                  <tr>
+
+                    <td class="text-capitalize">{{$applicationdata->application_type->name}}</td>
+
+                    @switch($applicationdata->application_status->id)
+                      @case(1)
+                        <td><span class="badge badge-info text-capitalize">{{$applicationdata->application_status->name}}</span></td>
+                        @break
+                      @case(2)
+                        <td><span class="badge badge-success text-capitalize">{{$applicationdata->application_status->name}}</span></td>
+                        @break
+                      @case(3)
+                        <td><span class="badge badge-danger text-capitalize">{{$applicationdata->application_status->name}}</span></td>
+                        @break
+                    @endswitch
+
+                    <td>{{$applicationdata->date_from}}</td>
+                    <td>{{$applicationdata->date_till}}</td>
+                    @if($applicationdata->application_status_remark == null)
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Geen Toelichting"><i class="far fa-comments" style="font-size: 130%"></i></button>
+                    </td>
+                    @else
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="{{$applicationdata->application_status_remark}}"><i class="far fa-comments" style="font-size: 130%"></i></button>
+                    </td>
+                    @endif
+                  </tr>
+                </tbody>
+                @endforeach
+              @endif
           </form>
         </table>
-
-
-
         <div class="d-table m-auto">
             {{ $closedApplications->appends([ 'searchUser' => ($data->has('searchUser') ? $data['searchUser'] : '')])->links() }}
         </div>
-
       </div>
     </div>
   </div>
 </div>
 </div>
-@endif
+
+
 
 </body>
 

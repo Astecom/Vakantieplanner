@@ -6,15 +6,11 @@
     <div class="container mt--8 pb-5">
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
-                <div class="card bg-secondary shadow border-0">
+                <div class="card">
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
                             <small>
-                              {{ __ ('Heeft u een account? Dan kunt u hier inloggen') }}
-                            </small>
-                            <br>
-                            <small>
-                                {{ __('Nog geen actief account? Vraag deze aan bij') }} <strong>directie@astecom.nl</strong>
+                                {{ __('Geen account? Vraag deze aan bij') }} <strong>directie@astecom.nl</strong>
                             </small>
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
