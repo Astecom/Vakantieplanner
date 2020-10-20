@@ -49,16 +49,12 @@ class adminPageController extends Controller
       $user = User::find($user_id);
       $user->removeRole('employee');
       $user->removeRole('employer');
-      $user->removeRole('admin');
 
       if($request->workerType == 1){
         $user->assignRole('employee');
       }
       elseif($request->workerType == 2){
         $user->assignRole('employer');
-      }
-      elseif($request->workerType == 3){
-        $user->assignRole('admin');
       }
 
       if($request->password != null){

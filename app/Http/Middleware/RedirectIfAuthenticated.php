@@ -26,9 +26,6 @@ class RedirectIfAuthenticated
             case 'employer':
               return redirect()->route('applicationcheck');
               break;
-            case 'admin':
-              return redirect()->route('adminpage');
-              break;
           }
             //return redirect(RouteServiceProvider::HOME);
         }
