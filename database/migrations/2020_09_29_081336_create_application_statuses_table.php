@@ -19,7 +19,17 @@ class CreateApplicationStatusesTable extends Migration
             $table->string('btn_class', 190);
             $table->boolean('active')->default(1);
             $table->timestamps();
-        });
+
+          });
+
+          $data = [
+          ['id'=> 1, 'name'=>'in afwachting', 'btn_class'=>'btn-primary'],
+          ['id'=> 2, 'name'=>'goedgekeurd', 'btn_class'=>'btn-success'],
+          ['id'=> 3, 'name'=>'afgekeurd', 'btn_class'=>'btn-danger'],
+          ];
+
+          DB::table('application_statuses')->insert($data);
+
     }
 
     /**

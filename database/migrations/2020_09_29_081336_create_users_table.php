@@ -22,7 +22,17 @@ class CreateUsersTable extends Migration
             $table->string('password', 191);
             $table->rememberToken();
             $table->timestamps();
-        });
+
+          });
+
+            DB::table('users')->insert(
+            array(
+                'id' => 1,
+                'name' => 'Directie',
+                'email' => 'directie@astecom.nl',
+                'password' => Hash::make('DirectieOnceLogin')
+            )
+        );
     }
 
     /**

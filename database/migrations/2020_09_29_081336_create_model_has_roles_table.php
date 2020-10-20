@@ -20,6 +20,12 @@ class CreateModelHasRolesTable extends Migration
             $table->index(['model_id', 'model_type']);
             $table->primary(['role_id', 'model_id', 'model_type']);
         });
+
+        $data = [
+        ['role_id'=> 2, 'model_id'=> 1, 'model_type'=>'App\Models\User'],
+        ];
+
+        DB::table('model_has_roles')->insert($data);
     }
 
     /**

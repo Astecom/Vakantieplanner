@@ -19,6 +19,13 @@ class CreateRolesTable extends Migration
             $table->string('guard_name', 191);
             $table->timestamps();
         });
+
+        $data = [
+        ['id'=> 1, 'name'=>'employee', 'guard_name'=>'web'],
+        ['id'=> 2, 'name'=>'employer', 'guard_name'=>'web'],
+        ];
+
+        DB::table('roles')->insert($data);
     }
 
     /**

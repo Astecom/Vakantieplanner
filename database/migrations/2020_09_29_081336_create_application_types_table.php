@@ -18,6 +18,13 @@ class CreateApplicationTypesTable extends Migration
             $table->string('name', 191);
             $table->timestamps();
         });
+
+        $data = [
+        ['id'=> 1, 'name'=>'verlof'],
+        ['id'=> 2, 'name'=>'bijzonder verlof'],
+        ];
+
+        DB::table('application_types')->insert($data);
     }
 
     /**
