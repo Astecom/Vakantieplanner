@@ -1,10 +1,9 @@
 @component('mail::message')
 # Instellen Wachtwoord
 
-Beste Gebruiker, er is succsesvol een wachtwoord aangevraagd voor uw account.
-Onderstaand kunt u doormiddel van de knop het nieuwe wachtwoord instellen
+Beste,
 
-Na het instellen hiervan is uw account klaar voor gebruik.
+Er is een wachtwoord aangevraagd voor uw account. Klik op onderstaande knop om een nieuw wachtwoord in te stellen.
 
 <br>
 

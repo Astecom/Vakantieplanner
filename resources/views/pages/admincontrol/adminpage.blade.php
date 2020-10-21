@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="card w-100 d-inline-block" style="height: 75px;">
-  <div data-route="{{route('adminpagesadd')}}" class="btn btn-addit float-left btn-success ml-4 mt-3">Gebruiker Toevoegen<i class="fas fa-user-plus ml-3"></i></div>
+  <div data-route="{{route('addUser')}}" class="btn btn-addit float-left btn-success ml-4 mt-3">Gebruiker Toevoegen<i class="fas fa-user-plus ml-3"></i></div>
   <div class="card-body">
       <span class="float-right mr-2 font-weight-bold">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
   </div>
@@ -36,13 +36,15 @@
                 <td>{{$getuser->created_at}}</td>
                 <td>
                   <a href="{{route('adminpagesendedit', $getuser->id)}}" type="button" class="btn btn-primary"><i class="fas fa-cogs" style="font-size: 140%"></i></a>
+                  @if($getuser->email != 'directie@astecom.nl')
                   <button data-route="{{route('adminpagedelete', $getuser->id)}}" type="button" class="btn btn-primary btn-deleteit"><i class="far fa-trash-alt" style="font-size: 140%"></i></button>
+                  @endif
                 </td>
               </tr>
 
               <div class="modal fade" id="addit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                  <form action="{{route('adminpagesadd')}}" method="post">
+                  <form action="{{route('addUser')}}" method="post">
                     @csrf
 
                   <div class="modal-content">

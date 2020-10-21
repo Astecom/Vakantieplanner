@@ -40,7 +40,7 @@ class ApplicationSent extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->markdown('mail.application.request');
+        return (new MailMessage)->subject('Verlofplanner - nieuwe verlofaanvraag')->markdown('mail.application.request');
     }
 
     /**

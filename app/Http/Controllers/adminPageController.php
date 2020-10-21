@@ -71,12 +71,11 @@ class adminPageController extends Controller
 
 
     // Add a new user to the database
-    public function adminpagesadd(request $request){
+    public function addUser(request $request){
       $validatedDataColums = $request->validate([
         'userName' => ['required', 'min:3', 'max:30'],
         'email' => ['required', 'min:5', 'max:30', 'email'],
       ]);
-
 
       $addrequest = new User;
       $addrequest->name = $request->userName;
@@ -86,7 +85,6 @@ class adminPageController extends Controller
       $addrequest->save();
       $addrequest->assignRole('employee');
       app('App\Http\Controllers\mailController')->setPassword($request->email);
-      $userMail = User::where('email', $request->email)->first();
 
       return redirect()->route('adminpage');
     }

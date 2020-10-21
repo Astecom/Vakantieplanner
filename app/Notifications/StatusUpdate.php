@@ -40,8 +40,7 @@ class StatusUpdate extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-        ->markdown('mail.application.status');
+        return (new MailMessage)->subject('Verlofplanner - status update')->markdown('mail.application.status');
     }
 
     /**

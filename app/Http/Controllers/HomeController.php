@@ -12,7 +12,7 @@ use Auth;
 use Carbon\Carbon;
 
 
-class HomeController extends Controller
+class homeController extends Controller
 {
 
     /**

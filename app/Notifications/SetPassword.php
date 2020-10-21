@@ -43,7 +43,7 @@ class SetPassword extends Notification
     public function toMail($notifiable)
     {
 
-        return (new MailMessage)->markdown('mail.set.password', ['token' => $this->token, 'email' => $this->email]);
+        return (new MailMessage)->subject('Verlofplanner - wachtwoord instellen')->markdown('mail.set.password', ['token' => $this->token, 'email' => $this->email]);
     }
 
     /**

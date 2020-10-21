@@ -10,8 +10,8 @@ use App\Models\User;
 Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['middleware' => 'guest'], function () {
-		Route::get('/', 'HomeController@index')->name('home');
-		Route::get('/home', 'HomeController@index')->name('home');
+		Route::get('/', 'homeController@index')->name('home');
+		Route::get('/home', 'homeController@index')->name('home');
 		});
 
 	Route::resource('user', 'UserController', ['except' => ['show']]);
@@ -36,8 +36,7 @@ Route::group(['middleware' => 'role:employer'], function () {
 	Route::get('/adminpages/endedit/{id}', 'adminPageController@editUser')->name('adminpagesendedit');
 	Route::post('/adminpages/endeditsubmit/{id}', 'adminPageController@editSubmit')->name('adminpagesendeditsubmit');
 	Route::post('/adminpages/endeditrights/{id}', 'adminPageController@endeditrights')->name('adminpageendeditrights');
-	Route::post('/adminpages/add', 'adminPageController@adminpagesadd')->name('adminpagesadd');
-	Route::get('/useradd', 'adminPageController@useradd')->name('useradd');
+	Route::post('/adminpages/add', 'adminPageController@addUser')->name('addUser');
 });
 
 // Routes Employer Role
