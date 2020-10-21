@@ -18,6 +18,7 @@ class CreateApplicationsTable extends Migration
             $table->unsignedBigInteger('type_id')->index('applications_type_id_foreign');
             $table->unsignedBigInteger('status_id')->index('applications_status_id_foreign');
             $table->unsignedBigInteger('user_id')->index('applications_user_id_foreign');
+            $table->string('google_calendar_id')->nullable();
             $table->string('remark', 191)->nullable();
             $table->string('application_status_remark', 191)->nullable();
             $table->dateTime('date_from');

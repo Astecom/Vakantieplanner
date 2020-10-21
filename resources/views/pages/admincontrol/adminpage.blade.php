@@ -31,7 +31,7 @@
             <tbody>
               @foreach($getusers as $getuser)
               <tr>
-                <td>{{$getuser->name}}</td>
+                <td class="text-capitalize" >{{$getuser->name}}</td>
                 <td>{{$getuser->email}}</td>
                 <td>{{$getuser->created_at}}</td>
                 <td>

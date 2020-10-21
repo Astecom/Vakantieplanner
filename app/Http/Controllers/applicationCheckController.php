@@ -74,12 +74,12 @@ class applicationCheckController extends Controller
             'endDateTime' => Carbon::parse($statusupdate->date_till),
           ]);
 
-          $statusupdate->google_calander_id = $newEvent->id;
+          $statusupdate->google_calendar_id = $newEvent->id;
           $statusupdate->save();
 
         }else if($request->buttonstatus == '3'){
           $deletecalanderid = Application::find($id);
-          $eventId = $deletecalanderid->google_calander_id;
+          $eventId = $deletecalanderid->google_calendar_id;
 
           if($eventId != null){
             $event = Event::find($eventId);

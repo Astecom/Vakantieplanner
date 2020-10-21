@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 
+Auth::routes();
+
+Route::get('/newpassword', 'homeController@newpassword')->name('newpassword');
+Route::post('/submitPassword', 'homeController@submitPassword')->name('submitPassword');
+
 // Auth and redirect routes
 Route::group(['middleware' => 'auth'], function () {
 
@@ -18,9 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-});
 
-Auth::routes();
 
 // Routes Employee Role
 Route::group(['middleware' => 'role:employee'], function () {
@@ -53,6 +56,4 @@ Route::group(['middleware' => 'role:employee|employer'], function () {
 // Routes Status & Remark & Login/Logout
 Route::post('/applicationcheck/status/{id}', 'applicationCheckController@status')->name('status');
 Route::post('/pushremark/{id}', 'applicationCheckController@pushremark')->name('pushremark');
-
-Route::get('/newpassword', 'homeController@newpassword')->name('newpassword');
-Route::post('/submitPassword', 'homeController@submitPassword')->name('submitPassword');
+});

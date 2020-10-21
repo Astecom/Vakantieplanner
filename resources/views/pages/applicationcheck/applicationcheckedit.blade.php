@@ -61,7 +61,7 @@
                 @foreach($statuses as $status)
                 <form class="d-table float-left" action="{{route('status', $applicationinfo->id)}}" method="post">
                   @csrf
-                  <button name='buttonstatus' class="btn {{$status->btn_class}} ml-2 text-capitalize" type="submit" value="{{$status->id}}">{{$status->name}}</button>
+                  <button name='buttonstatus' class="btn {{$status->btn_class}} text-capitalize" type="submit" value="{{$status->id}}">{{$status->name}}</button>
                 @endforeach
               </div>
             </div>
@@ -70,7 +70,7 @@
       </div>
     </div>
 
-    
+
 
 
 <div class="col-5">

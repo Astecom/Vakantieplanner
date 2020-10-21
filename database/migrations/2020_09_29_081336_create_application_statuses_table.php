@@ -23,9 +23,9 @@ class CreateApplicationStatusesTable extends Migration
           });
 
           $data = [
-          ['id'=> 1, 'name'=>'in afwachting', 'btn_class'=>'btn-primary'],
-          ['id'=> 2, 'name'=>'goedgekeurd', 'btn_class'=>'btn-success'],
-          ['id'=> 3, 'name'=>'afgekeurd', 'btn_class'=>'btn-danger'],
+          ['id'=> 1, 'active'=>0, 'name'=>'in afwachting', 'btn_class'=>'btn-primary'],
+          ['id'=> 2, 'active'=>1, 'name'=>'goedgekeurd', 'btn_class'=>'btn-success'],
+          ['id'=> 3, 'active'=>1, 'name'=>'afgekeurd', 'btn_class'=>'btn-danger'],
           ];
 
           DB::table('application_statuses')->insert($data);

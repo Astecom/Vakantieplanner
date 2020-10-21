@@ -7,7 +7,7 @@ U kunt de aanvraag beoordelen doormiddel van de zwarte knop.<br>
 Hier kunt u de status naar Goedgekeurd of Afkeurd updaten. <br>
 Ook is het mogelijk om hier een toelichting aan toe te voegen
 
-@component('mail::button', ['url' => route('applicationcheck')])
+@component('mail::button', ['url' => route('login')])
 Beoordelen Aanvraag
 @endcomponent
 
