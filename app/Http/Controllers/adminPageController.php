@@ -86,7 +86,7 @@ class adminPageController extends Controller
       $addrequest->save();
       $addrequest->assignRole('employee');
       app('App\Http\Controllers\mailController')->setPassword($request->email);
-      $getuserid = User::where('email', $request->email)->first();
+      $userMail = User::where('email', $request->email)->first();
 
       return redirect()->route('adminpage');
     }

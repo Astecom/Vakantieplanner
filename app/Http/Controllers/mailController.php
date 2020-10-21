@@ -18,7 +18,7 @@ class mailController extends Controller
 
   // Getting the email adress and give it a token. thereafter sent an email to the specific user
   public function setPassword($email){
-    $user = Auth::user();
+    $user = User::where('email', $email)->first();
     $notification = new SetPassword;
     $alreadyExists = PasswordReset::where('email', $email)->first();
 
