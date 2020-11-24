@@ -1,9 +1,7 @@
 @component('mail::message')
 # Instellen Wachtwoord
 
-Beste,
-
-Er is een wachtwoord aangevraagd voor uw account. Klik op onderstaande knop om een nieuw wachtwoord in te stellen.
+Beste, Er is een wachtwoord aangevraagd voor uw account. Klik op onderstaande knop om een nieuw wachtwoord in te stellen.
 
 <br>
 

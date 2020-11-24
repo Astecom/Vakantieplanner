@@ -4,7 +4,7 @@
 <div class="card w-100 d-inline-block" style="height: 75px;">
   <div data-route="{{route('addUser')}}" class="btn btn-addit float-left btn-success ml-4 mt-3">Gebruiker Toevoegen<i class="fas fa-user-plus ml-3"></i></div>
   <div class="card-body">
-      <span class="float-right mr-2 font-weight-bold">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
+      <span class="float-right mr-2 font-weight-bold text-capitalize">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
   </div>
 </div>
 

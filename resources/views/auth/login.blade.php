@@ -34,7 +34,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Wachtwoord') }}" type="password" required>
+                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Wachtwoord" type="password" required>
                                 </div>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -53,14 +53,12 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div
                 <div class="row mt-3">
                     <div class="col-6">
-                        @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="text-light">
+                            <a href="{{ route('forgotPassword') }}" class="text-light">
                                 <small>{{ __('Wachtwoord vergeten?') }}</small>
                             </a>
-                        @endif
                     </div>
                 </div>
             </div>

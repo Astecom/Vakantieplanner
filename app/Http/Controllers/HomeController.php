@@ -58,4 +58,14 @@ class homeController extends Controller
 
     }
 
+    public function forgotPassword(){
+      return view('auth\passwords\forgotpassword');
+    }
+
+    public function resetPassword(request $request){
+      $user = User::where('email',$request->email)->first();
+      app('App\Http\Controllers\mailController')->setPassword($user->email);
+      return redirect('login');
+    }
+
 }

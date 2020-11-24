@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="card w-100 d-inline-block" style="height: 75px;">
-  <span class="float-right font-weight-bold mt-4 mr-3">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
+  <span class="float-right font-weight-bold mt-4 mr-3 text-capitalize">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
 </div>
 
 <div class="col-12 mt-2">

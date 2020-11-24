@@ -1,7 +1,6 @@
 @component('mail::message')
-# Nieuwe Verlof Aanvraag
+# Nieuwe verlofaanvraag van {{$authUser->name}}
 
-Beste, Er is een nieuwe aanvraag voor verlof in afwachting.<br>
 U kunt de aanvraag beoordelen doormiddel van de zwarte knop.<br>
 
 Hier kunt u de status naar Goedgekeurd of Afkeurd updaten. <br>

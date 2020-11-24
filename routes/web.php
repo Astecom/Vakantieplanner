@@ -10,6 +10,9 @@ Auth::routes();
 
 Route::get('/newpassword', 'homeController@newpassword')->name('newpassword');
 Route::post('/submitPassword', 'homeController@submitPassword')->name('submitPassword');
+Route::get('/forgotPassword', 'homeController@forgotPassword')->name('forgotPassword');
+Route::post('/resetPassword', 'homeController@resetPassword')->name('resetPassword');
+
 
 // Auth and redirect routes
 Route::group(['middleware' => 'auth'], function () {

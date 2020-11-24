@@ -10,15 +10,16 @@ use Illuminate\Notifications\Notification;
 class ApplicationSent extends Notification
 {
     use Queueable;
+    public $authUser;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($authUser)
     {
-        //
+        $this->authUser = $authUser;
     }
 
     /**
@@ -40,7 +41,7 @@ class ApplicationSent extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->subject('Verlofplanner - nieuwe verlofaanvraag')->markdown('mail.application.request');
+        return (new MailMessage)->subject('Verlofplanner - nieuwe verlofaanvraag')->markdown('mail.application.request' ,['authUser' => $this->authUser]);
     }
 
     /**

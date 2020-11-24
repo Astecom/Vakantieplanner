@@ -4,7 +4,7 @@
 <div class="card w-100 d-inline-block" style="height: 75px;">
   <a type="button" href="{{route('adminpage')}}" class="btn float-left btn-info ml-4 mt-3" >Terug naar Overzicht <i class="fas fa-undo-alt ml-1"></i></a>
   <div class="card-body">
-      <span class="float-right mr-2 font-weight-bold">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
+      <span class="float-right mr-2 font-weight-bold text-capitalize">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
   </div>
 </div>
 

@@ -8,7 +8,7 @@
     @endif
 
     <div class="card-body">
-        <span class="float-right mr-2 font-weight-bold">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
+        <span class="float-right mr-2 font-weight-bold text-capitalize">{{Auth::user()->name}} |<i class="fas fa-user ml-1"></i></span>
     </div>
   </div>
 
